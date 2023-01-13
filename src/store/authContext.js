@@ -34,7 +34,7 @@ const getLocalData = () => {
   return {
     token: storedToken,
     duration: remainingTime,
-    userId: storedUserId
+    userId: +storedUserId
   }
 }
 
@@ -50,6 +50,7 @@ export const AuthContextProvider = (props) => {
     initialId = localData.userId
   }
 
+  console.log(initialId)
   const [token, setToken] = useState(initialToken)
   const [userId, setUserId] = useState(initialId)
 
@@ -91,6 +92,7 @@ export const AuthContextProvider = (props) => {
     logout, 
     userId
   }
+  console.log(contextValue)
 
   return (
     <AuthContext.Provider value={contextValue}>

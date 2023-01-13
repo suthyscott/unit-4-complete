@@ -23,10 +23,10 @@ const Auth = () => {
         }
 
         // const url = 'https://socialmtn.devmountain.com'
-        const url = "http://localhost:4545"
+        // const url = "http://localhost:4545"
 
         axios
-            .post(register ? `${url}/register` : `${url}/login`, body)
+            .post(register ? `/register` : `/login`, body)
             .then(res => {
                 console.log("AFTER AUTH", res.data)
                 authCtx.login(res.data.token, res.data.exp, res.data.userId)
