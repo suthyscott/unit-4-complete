@@ -67,16 +67,21 @@ export const AuthContextProvider = (props) => {
     }
   }, [])
 
+  // 8. the login function receives the user's data as parameters
   const login = (token, exp, userId) => {
+    // 9. put the user token and id on local state values here in the context. 
     setToken(token)
     setUserId(userId)
 
+    // 10. put the user's data on localStorage 
     localStorage.setItem('token', token)
     localStorage.setItem('exp', exp)
     localStorage.setItem('userId', userId)
 
+    // 11. use the calculateRemainingTime function to check if the expiration has run out
     const remainingTime = calculateRemainingTime(exp)
 
+    // 12. Set a timer based on how much time is left before the token expires. 
     logoutTimer = setTimeout(logout, remainingTime)
   }
 
@@ -86,6 +91,7 @@ export const AuthContextProvider = (props) => {
     }
   }, [localData, logout])
 
+  // 13. The actual value of the context object is determined here
   const contextValue = {
     token,
     login,
@@ -95,6 +101,7 @@ export const AuthContextProvider = (props) => {
   console.log(contextValue)
 
   return (
+    // 13.1 we passed the object with state values to the Provider. 
     <AuthContext.Provider value={contextValue}>
       {props.children}
     </AuthContext.Provider>

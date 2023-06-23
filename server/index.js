@@ -20,6 +20,7 @@ User.hasMany(Post)
 Post.belongsTo(User)
 
 //AUTH
+// 2. request is received in our server (this index.js file) and routed to the appropriate handler function in the auth.js controller depending on the endpoint. 
 app.post('/register', register)
 app.post('/login', login)
 
